@@ -58,7 +58,7 @@ func (b modelBuilder) addModel(st reflect.Type, nameOverride string) *Items {
 		sm.Properties[field.Name] = &Items{}
 		ft := field.Type
 		isCollection, ft := detectCollectionType(ft)
-		fieldName := modelBuilder{Config:b.Config}.keyFrom(ft)
+		fieldName := modelBuilder{Config: b.Config}.keyFrom(ft)
 		if !isCollection {
 			if ft.Kind() == reflect.Struct {
 				if fieldName == "time.Time" {
@@ -77,13 +77,13 @@ func (b modelBuilder) addModel(st reflect.Type, nameOverride string) *Items {
 				if ft.Kind() == reflect.Struct {
 					sm.Properties[field.Name].Type = "object"
 					sm.Properties[field.Name].AdditionalProperties = &Items{}
-					modelName = modelBuilder{Config:b.Config}.keyFrom(ft)
+					modelName = modelBuilder{Config: b.Config}.keyFrom(ft)
 					sm.Properties[field.Name].AdditionalProperties.Ref = getModelName(modelName)
 					b.addModel(ft, "")
 				} else {
 					sm.Properties[field.Name].Type = "object"
 					sm.Properties[field.Name].AdditionalProperties = &Items{}
-					modelName = modelBuilder{Config:b.Config}.keyFrom(ft)
+					modelName = modelBuilder{Config: b.Config}.keyFrom(ft)
 					sm.Properties[field.Name].AdditionalProperties.Type = getOtherName(modelName)
 					if getOtherName(modelName) == "integer" || getOtherName(modelName) == "number" {
 						sm.Properties[field.Name].AdditionalProperties.Format = getFormat(modelName)
@@ -168,7 +168,6 @@ func (b modelBuilder) nameOfField(field reflect.StructField) string {
 	}
 	return field.Name
 }
-
 
 // typeOfField returns the type of the field as it should appear in JSON format
 // An empty string indicates that this field is not part of the JSON representation

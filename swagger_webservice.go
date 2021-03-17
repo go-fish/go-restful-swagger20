@@ -65,7 +65,7 @@ func (sws SwaggerService) WriteToFile() {
 		if sws.config.FileStyle == "json" {
 			list, err := json.Marshal(listing)
 			if err == nil {
-				err1 := ioutil.WriteFile(sws.config.OutFilePath, list, 0644)
+				err1 := ioutil.WriteFile(sws.config.OutFilePath, list, 0600)
 				if err1 != nil {
 					log.Printf("fail to write to file", err1)
 				}
@@ -73,7 +73,7 @@ func (sws SwaggerService) WriteToFile() {
 		} else {
 			list, err := yaml.Marshal(listing)
 			if err == nil {
-				err1 := ioutil.WriteFile(sws.config.OutFilePath, list, 0644)
+				err1 := ioutil.WriteFile(sws.config.OutFilePath, list, 0600)
 				if err1 != nil {
 					log.Printf("fail to write to file", err1)
 				}
