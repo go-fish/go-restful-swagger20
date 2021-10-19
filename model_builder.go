@@ -114,6 +114,9 @@ func (b modelBuilder) addModel(st reflect.Type, nameOverride string) *Items {
 		if b.typeOfField(field) != "" {
 			sm.Properties[field.Name].Type = b.typeOfField(field)
 		}
+		if description := b.description(field); description != "" {
+			sm.Properties[field.Name].Description = description
+		}
 	}
 	(*b.Definitions)[name] = &sm
 	return &sm
@@ -182,4 +185,8 @@ func (b modelBuilder) typeOfField(field reflect.StructField) string {
 		}
 	}
 	return ""
+}
+
+func (b modelBuilder) description(field reflect.StructField) string {
+	return field.Tag.Get("description")
 }
