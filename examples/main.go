@@ -9,9 +9,10 @@ import (
 	"github.com/emicklei/go-restful"
 
 	"fmt"
-	"github.com/go-chassis/go-restful-swagger20"
 	"os"
 	"path/filepath"
+
+	swagger "github.com/go-fish/go-restful-swagger20"
 )
 
 type Book struct {

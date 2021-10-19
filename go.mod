@@ -1,4 +1,4 @@
-module github.com/go-chassis/go-restful-swagger20
+module github.com/go-fish/go-restful-swagger20
 
 require (
 	github.com/emicklei/go-restful v2.12.0+incompatible
